@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  yavbot-frontend:
+    image: yavbot-frontend:latest
+    networks:
+      - traefik-public
+      - yavbot-networks
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.yavbot-frontend.entrypoints=http"
+        - "traefik.http.routers.yavbot-frontend.rule=Host(`yavbot-frontend.sistemaagil.net`)"
+        - "traefik.http.middlewares.yavbot-frontend-https-redirect.redirectscheme.scheme=https"
+        - "traefik.http.routers.yavbot-frontend.middlewares=yavbot-frontend-https-redirect"
+        - "traefik.http.routers.yavbot-frontend-secure.entrypoints=https"
+        - "traefik.http.routers.yavbot-frontend-secure.rule=Host(`yavbot-frontend.sistemaagil.net`)"
+        - "traefik.http.routers.yavbot-frontend-secure.tls=true"
+        - "traefik.http.routers.yavbot-frontend-secure.tls.certresolver=http"
+        - "traefik.http.routers.yavbot-frontend-secure.service=yavbot-frontend"
+        - "traefik.http.services.yavbot-frontend.loadbalancer.server.port=80"
+        - "traefik.docker.network=traefik-public"
+
+  yavbot-backend:
+    image: yavbot-backend:latest
+    networks:
+      - yavbot-networks
+      - traefik-public
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.yavbot-backend.entrypoints=http"
+        - "traefik.http.routers.yavbot-backend.rule=Host(`yavbot-backend.sistemaagil.net`)"
+        - "traefik.http.middlewares.yavbot-backend-https-redirect.redirectscheme.scheme=https"
+        - "traefik.http.routers.yavbot-backend.middlewares=yavbot-backend-https-redirect"
+        - "traefik.http.routers.yavbot-backend-secure.entrypoints=https"
+        - "traefik.http.routers.yavbot-backend-secure.rule=Host(`yavbot-backend.sistemaagil.net`)"
+        - "traefik.http.routers.yavbot-backend-secure.tls=true"
+        - "traefik.http.routers.yavbot-backend-secure.tls.certresolver=http"
+        - "traefik.http.routers.yavbot-backend-secure.service=yavbot-backend"
+        - "traefik.http.services.yavbot-backend.loadbalancer.server.port=3000"
+        - "traefik.docker.network=traefik-public"
+
+  basededatos-pg:
+    image: postgres:14
+    environment:
+      POSTGRES_PASSWORD: tdaoybvt
+    networks:
+      - yavbot-networks
+networks:
+  traefik-public:
+    external: true
+  yavbot-networks:
+    external: true
