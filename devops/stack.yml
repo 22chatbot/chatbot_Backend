@@ -38,7 +38,7 @@ services:
         - "traefik.http.routers.yavbot-backend-secure.tls=true"
         - "traefik.http.routers.yavbot-backend-secure.tls.certresolver=http"
         - "traefik.http.routers.yavbot-backend-secure.service=yavbot-backend"
-        - "traefik.http.services.yavbot-backend.loadbalancer.server.port=3000"
+        - "traefik.http.services.yavbot-backend.loadbalancer.server.port=8091"
         - "traefik.docker.network=traefik-public"
 
   basededatos-pg:
