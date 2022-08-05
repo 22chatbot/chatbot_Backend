@@ -9,7 +9,7 @@ pipeline {
 stage('analisis sonar') {
             agent {
                 docker {
-                    label 'integracion'
+                    label 'principal'
                     image 'sonar-client-4.5-py3:1.0.2'
                     args '--network=service_net'
                     //registryUrl 'https://sonarqube.sistemaagil.net:5000'
