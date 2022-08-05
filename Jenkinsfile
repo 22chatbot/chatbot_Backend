@@ -10,10 +10,10 @@ stage('analisis sonar') {
             agent {
                 docker {
                     label 'integracion'
-                    image 'registry.sistemaagil.net:5000/sonar-client-4.5-py3:1.0.2'
-                    args '--network=postgres_net'
-                    registryUrl 'https://sonarqube.sistemaagil.net:5000'
-                    registryCredentialsId 'admin-registry-pass'
+                    image 'sonar-client-4.5-py3:1.0.2'
+                    args '--network=service_net'
+                    //registryUrl 'https://sonarqube.sistemaagil.net:5000'
+                    //registryCredentialsId 'admin-registry-pass'
                 }
             }
             steps {
