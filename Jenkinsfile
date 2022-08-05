@@ -12,7 +12,7 @@ stage('analisis sonar') {
                     label 'integracion'
                     image 'registry.sistemaagil.net:5000/sonar-client-4.5-py3:1.0.2'
                     args '--network=postgres_net'
-                    registryUrl 'http://172.40.0.50:5000'
+                    registryUrl 'https://sonarqube.sistemaagil.net:5000'
                     registryCredentialsId 'admin-registry-pass'
                 }
             }
