@@ -21,8 +21,7 @@ pipeline {
                 //sh 'coverage run --source=./yavbot -m unittest unit-tests/test_*.py'
                 //sh 'coverage xml'
                 sh 'ls'
-                sh 'whoami'
-                sh '/root/sonar-scanner-4.5.0.2216-linux/bin/sonar-scanner'
+                sh 'ls /root/sonar-scanner-4.5.0.2216-linux/bin/'
             }
         }
     }
