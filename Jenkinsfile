@@ -23,6 +23,7 @@ stage('analisis sonar') {
                 sh '/root/sonar-scanner-4.5.0.2216-linux/bin/sonar-scanner'
             }
         }
+
         stage("Respuesta Sonar"){
             agent {
                 docker {
