@@ -22,7 +22,7 @@ pipeline {
                 //sh 'coverage xml'
                 sh 'pwd'
                 sh 'ls'
-                sh '/root/sonar-scanner-4.5.0.2216-linux/bin/sonar-scanner'
+                //sh '/root/sonar-scanner-4.5.0.2216-linux/bin/sonar-scanner'
             }
         }
     }
