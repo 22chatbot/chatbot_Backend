@@ -6,20 +6,23 @@ pipeline {
         HOME = '.'
     }
     stages {
-
-        stage("Analisis Sonar"){
+stage('analisis sonar') {
             agent {
                 docker {
                     label 'integracion'
-                    image 'node:16'
+                    image 'registry.sistemaagil.net:5000/sonar-client-4.5-py3:1.0.2'
+                    args '--network=postgres_net'
+                    registryUrl 'http://172.40.0.50:5000'
+                    registryCredentialsId 'admin-registry-pass'
                 }
             }
-            steps{
-                sh "npm install"
-                sh "npm run sonar"
+            steps {
+                //sh 'python3 -m xmlrunner unit-tests/test_*.py -o ./junit-reports'
+                //sh 'coverage run --source=./logic -m unittest unit-tests/test_*.py'
+                //sh 'coverage xml'
+                sh '/root/sonar-scanner-4.5.0.2216-linux/bin/sonar-scanner'
             }
         }
-
         stage("Respuesta Sonar"){
             agent {
                 docker {
