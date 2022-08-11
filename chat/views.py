@@ -1,8 +1,8 @@
-from django.shortcuts import render
-from chat.models import Intenciones
+
+from chat.models import Intent
 from rest_framework import viewsets
-from chat.serializer import IntencionesSerializer
+from chat.serializer import IntentSerializer
 # Create your views here.
-class IntencionesViewset(viewsets.ModelViewSet):
-    queryset = Intenciones.objects.all()
-    serializer_class = IntencionesSerializer
+class IntentViewSet(viewsets.ModelViewSet):
+    queryset = Intent.objects.all()
+    serializer_class = IntentSerializer
