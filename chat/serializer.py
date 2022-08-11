@@ -1,4 +1,3 @@
-from dataclasses import fields
 from chat.models import Intent
 from rest_framework import serializers
 

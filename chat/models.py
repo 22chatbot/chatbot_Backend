@@ -1,4 +1,4 @@
-from ast import pattern
+
 from http.client import responses
 from multiprocessing import context
 from django.db import models
