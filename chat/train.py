@@ -1,6 +1,6 @@
 import nltk
-nltk.download('punkt')
-nltk.download('wordnet')
+#nltk.download('punkt')
+#nltk.download('wordnet')
 from nltk.stem import WordNetLemmatizer
 
 import json
@@ -25,7 +25,7 @@ class Train:
 
         # intents: gruppi di conversazioni-tipo
         # patterns: possibili interazioni dell'utente
-        for intent in intents['intents']:
+        for intent in intents:
             for pattern in intent['patterns']:
 
                 # tokenizzo ogni parola

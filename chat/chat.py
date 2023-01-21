@@ -16,7 +16,7 @@ class Chat:
     # preprocessamento input utente
     def clean_up_sentence(self, sentence):
         sentence_words = nltk.word_tokenize(self, sentence)
-        sentence_words = [self, lemmatizer.lemmatize(word.lower()) for word in sentence_words]
+        sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
         return sentence_words
 
     # creazione bag of words

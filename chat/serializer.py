@@ -9,7 +9,7 @@ class IntentSerializer(serializers.ModelSerializer):
         model = Intent
         fields = '__all__'
 
-class ChatSerializer(serializers.Serializer.ModelSerializer):
+class ChatSerializer(serializers.ModelSerializer):
 
     class Mata:
         model = Chat
